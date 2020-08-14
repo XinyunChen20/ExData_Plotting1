@@ -1,3 +1,12 @@
+# download file if it does not exist
+file <- "household_power_consumption.txt"
+url <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
+if (!file.exists("electric_power_data.zip")){
+    download.file(url,destfile = "electric_power_data.zip",method = "curl")
+}
+if (!file.exists(file)){
+    unzip("electric_power_data.zip")
+}
 #read in the data set and choose the date of interest
 data <- read.table("household_power_consumption.txt",sep = ";",header = TRUE)
 data$Date <- as.Date(data$Date, "%d/%m/%Y")
