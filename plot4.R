@@ -19,6 +19,7 @@ data <- data[,2:9]
 data[,2:8]<-lapply(data[,2:8],as.numeric)
 
 #plot4
+png(filename="plot4.png")
 par(mfrow=c(2,2),mar=c(4,4,1,1))
 with(data,plot(DateTime,Global_active_power,type = "l",
                ylab = "Global Active Power (kilowatts)",xlab = ""))
@@ -28,8 +29,7 @@ with(data,{
     lines(DateTime,Sub_metering_2,col="red")
     lines(DateTime,Sub_metering_3,col="blue")
 })
-legend("topright",lty=1,col=c("black","red","blue"),bty="n", y.intersp = 0.4,inset=0,
+legend("topright",lty=1,col=c("black","red","blue"),bty="n", 
        legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
 with(data,plot(DateTime,Global_reactive_power,type = "l",ylab = "Global_reactive_power",xlab = "datetime"))
-dev.copy(png,"plot4.png",width=480,height=480)
 dev.off()
